@@ -15,7 +15,8 @@ part 'database.g.dart';
 class Database extends _$Database {
   Database() : super(_openConnection());
 
-  static Future<String> resourcePath(String name) async => p.join(await _resourcesPath, name);
+  static Future<String> resourcePath(String name) async =>
+      p.join(await _resourcesPath, name);
 
   static Future<String> get _resourcesPath async {
     final path = p.join(await _rootPath, "resources");
@@ -32,7 +33,7 @@ class Database extends _$Database {
   }
 
   @override
-  int get schemaVersion => 1;
+  int get schemaVersion => 2;
 
   static LazyDatabase _openConnection() => LazyDatabase(() async {
         final file = File(p.join(await Database._rootPath, 'db.sqlite'));
